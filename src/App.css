@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 /* Lenis smooth scrolling styles */
 html.lenis,
 html.lenis body {
@@ -23,7 +22,7 @@ html.lenis body {
   padding: 0;
   background-color: black;
   position: relative;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   overflow-x: hidden;
   /* Prevent horizontal scroll */
 }
@@ -94,7 +93,7 @@ body {
 @media (max-width: 768px) and (max-resolution: 1dppx) {
   .video-background {
     /* Use a static background image for low-res/slow devices */
-    background-image: url('/landing-page.jpg');
+    background-image: url("/landing-page.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -141,9 +140,19 @@ body {
   position: absolute;
   inset: 0;
   backdrop-filter: blur(16px);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 70%,
+    transparent 100%
+  );
   mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 60%,
+    transparent 100%
+  );
   height: 150%;
   top: -25%;
 }
@@ -334,7 +343,7 @@ body {
 /* Typing animation */
 .typing-text {
   background: linear-gradient(90deg, #ff7f00 0%, #ff9500 50%, #ffb700 100%);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -348,7 +357,6 @@ body {
 }
 
 @keyframes blink {
-
   0%,
   50% {
     opacity: 1;
@@ -654,7 +662,12 @@ body {
 
 .quote-line-gradient {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 127, 0, 0.3) 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 127, 0, 0.3) 50%,
+    transparent 100%
+  );
   max-width: clamp(200px, 50vw, 384px);
   margin: 0 auto;
 }
@@ -698,7 +711,8 @@ body {
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  padding: clamp(60px, 10vw, 100px) clamp(16px, 4vw, 32px) clamp(80px, 12vw, 120px) clamp(16px, 4vw, 32px);
+  padding: clamp(60px, 10vw, 100px) clamp(16px, 4vw, 32px)
+    clamp(80px, 12vw, 120px) clamp(16px, 4vw, 32px);
 }
 
 .services-header {
@@ -803,7 +817,11 @@ body {
   left: 0;
   right: 0;
   height: 100%;
-  background: linear-gradient(135deg, rgba(255, 127, 0, 0.05) 0%, transparent 50%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 127, 0, 0.05) 0%,
+    transparent 50%
+  );
   opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none;
@@ -826,10 +844,15 @@ body {
 }
 
 .service-icon::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -1077,7 +1100,8 @@ body {
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  padding: clamp(60px, 10vw, 100px) clamp(16px, 4vw, 32px) clamp(80px, 12vw, 120px) clamp(16px, 4vw, 32px);
+  padding: clamp(60px, 10vw, 100px) clamp(16px, 4vw, 32px)
+    clamp(80px, 12vw, 120px) clamp(16px, 4vw, 32px);
 }
 
 .testimonials-header {
@@ -1182,7 +1206,11 @@ body {
   left: 0;
   right: 0;
   height: 100%;
-  background: linear-gradient(135deg, rgba(255, 127, 0, 0.03) 0%, transparent 50%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 127, 0, 0.03) 0%,
+    transparent 50%
+  );
   opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none;
@@ -1221,7 +1249,7 @@ body {
 }
 
 .testimonial-text::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -20px;
   top: 0;
@@ -1278,10 +1306,15 @@ body {
 }
 
 .testimonial-avatar-bg::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -1492,7 +1525,6 @@ body {
 
 /* Mobile Touch Optimizations */
 @media (max-width: 768px) {
-
   /* Improve touch targets */
   .nav-link {
     padding: 12px 8px;
@@ -1549,7 +1581,6 @@ body {
 
 /* Additional mobile utilities */
 @media (max-width: 480px) {
-
   /* Reduce margin/padding for very small screens */
   .hero-container,
   .about-container,
