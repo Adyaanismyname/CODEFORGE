@@ -1,14 +1,12 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import {
   motion,
-  useScroll,
-  useTransform,
   useReducedMotion,
+  useScroll,
   useSpring,
+  useTransform,
 } from "framer-motion";
 import Lenis from "lenis";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 
 const App = () => {
@@ -19,11 +17,33 @@ const App = () => {
   const [typedText, setTypedText] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  console.log("🚀 ~ App ~ isMobile:", isMobile);
   const typingTimeoutRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
   const lenisRef = useRef(null);
 
   const words = useMemo(() => ["WEBSITES", "AUTOMATION SCRIPTS", "APPS"], []);
+
+  // Mobile detection hook
+  useEffect(() => {
+    const checkIsMobile = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isMobileDevice =
+        /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(
+          userAgent
+        );
+      const isSmallScreen = window.innerWidth <= 768;
+      setIsMobile(isMobileDevice || isSmallScreen);
+    };
+
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, []);
 
   // Optimized scroll effects with springs for smoother animation with Lenis
   const heroOpacity = useSpring(useTransform(scrollY, [0, 200], [1, 0]), {
@@ -313,8 +333,13 @@ const App = () => {
         loop
         playsInline
         id="landing-video"
+        key={isMobile ? "mobile" : "desktop"} // Force re-render when device type changes
       >
-        <source src="/landing-page.webm" type="video/webm" />
+        <source
+          src={isMobile ? "/landing-page-mobile.mp4" : "/landing-page.webm"}
+          type={isMobile ? "video/mp4" : "video/webm"}
+        />
+        <source src="/landing-page.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* Hero Content - Optimized animations */}
@@ -724,7 +749,7 @@ const App = () => {
                   "Analytics & Reports",
                 ],
               },
-            ].map((service, index) => (
+            ].map((service) => (
               <motion.div
                 key={service.title}
                 className="service-card"
@@ -944,7 +969,7 @@ const App = () => {
                   "Our online sales increased by 300% after launching the new e-commerce platform. CodeForge delivered beyond our wildest expectations.",
                 project: "E-commerce Redesign",
               },
-            ].map((testimonial, index) => (
+            ].map((testimonial) => (
               <motion.div
                 key={testimonial.name}
                 className="testimonial-card"
