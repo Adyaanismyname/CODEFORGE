@@ -12,7 +12,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 const App = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotion(); // reduce motion
   const { scrollY } = useScroll();
   const [scrollEnabled, setScrollEnabled] = useState(false);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
