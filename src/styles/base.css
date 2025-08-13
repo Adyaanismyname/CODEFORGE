@@ -1,0 +1,135 @@
+/* Force white background for contact section - highest priority */
+[id="contact"],
+#contact,
+.contact-section,
+div[id="contact"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* Lenis smooth scrolling styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Reset and base styles */
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  position: relative;
+  font-family: "JetBrains Mono", monospace;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+}
+
+/* Ensure all content respects viewport width */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+    /* Reduce base font size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Video background */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: blur(0px);
+  animation: videoReveal 3s ease-in-out forwards;
+  z-index: 1;
+}
+
+/* Mobile video background optimizations */
+@media (max-width: 768px) {
+  .video-background {
+    /* Better mobile video handling */
+    object-fit: fill;
+    object-position: center center;
+    /* min-width: 100%;
+    min-height: 100%; */
+    width: auto;
+    height: auto;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-background {
+    /* Ensure video covers full screen on small devices */
+    object-fit: cover;
+    object-position: center center;
+    width: 100vw;
+    height: 100vh;
+    transform: none;
+  }
+}
+
+/* Fallback for devices that don't support the video */
+@media (max-width: 768px) and (max-resolution: 1dppx) {
+  .video-background {
+    /* Use a static background image for low-res/slow devices */
+    background-image: url("/landing-page.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@keyframes videoReveal {
+  0% {
+    opacity: 0;
+    filter: blur(0px);
+  }
+
+  10% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  66.67% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  83.33% {
+    opacity: 1;
+    filter: blur(6px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(6px);
+  }
+}

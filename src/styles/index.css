@@ -1,0 +1,14 @@
+/* Main CSS file that imports all section styles */
+@import "tailwindcss";
+
+/* Import all section styles */
+@import "./base.css";
+@import "./navigation.css";
+@import "./hero.css";
+@import "./about.css";
+@import "./services.css";
+@import "./extra.css";
+@import "./testimonials.css";
+@import "./contact.css";
+@import "./footer.css";
+@import "./legacy.css";

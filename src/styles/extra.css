@@ -1,0 +1,43 @@
+/* Extra section */
+.extra-section {
+  position: relative;
+  z-index: 10;
+  background-color: #111827;
+  min-height: 120vh;
+}
+
+.extra-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: clamp(60px, 10vw, 80px) clamp(16px, 4vw, 24px);
+}
+
+.extra-title {
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: bold;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.extra-text {
+  font-size: clamp(14px, 3.5vw, 18px);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* Mobile Extra Section */
+@media (max-width: 768px) {
+  .extra-section {
+    min-height: auto;
+  }
+
+  .extra-container {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .extra-container {
+    padding: 50px 16px;
+  }
+}
