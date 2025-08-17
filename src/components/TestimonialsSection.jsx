@@ -25,10 +25,10 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
 
   const testimonials = [
     {
-      name: "Sarah Chen",
-      position: "CEO, TechStart Inc.",
-      company: "TechStart",
-      avatar: "SC",
+      name: "Medsaad",
+      // position: "CEO, TechStart Inc.",
+      // company: "TechStart",
+      avatar: "MS",
       rating: 5,
       testimonial:
         "CodeForge transformed our vision into a stunning web application that exceeded all expectations. Their attention to detail and innovative approach helped us launch ahead of schedule.",
@@ -128,11 +128,11 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
                 shouldReduceMotion
                   ? {}
                   : {
-                      y: -10,
-                      scale: 1.02,
-                      rotateX: 2,
-                      transition: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
-                    }
+                    y: -10,
+                    scale: 1.02,
+                    rotateX: 2,
+                    transition: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
+                  }
               }
               whileTap={
                 shouldReduceMotion
@@ -202,22 +202,6 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
                   <p className="testimonial-author-position">
                     {testimonial.position}
                   </p>
-                  <div className="testimonial-company">
-                    <svg
-                      className="testimonial-company-icon"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                      />
-                    </svg>
-                    <span>{testimonial.company}</span>
-                  </div>
                 </div>
               </div>
             </motion.div>
@@ -258,10 +242,10 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
                 shouldReduceMotion
                   ? {}
                   : {
-                      scale: 1.05,
-                      boxShadow: "0 20px 40px rgba(255, 127, 0, 0.3)",
-                      transition: { duration: 0.3 },
-                    }
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(255, 127, 0, 0.3)",
+                    transition: { duration: 0.3 },
+                  }
               }
               whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
             >

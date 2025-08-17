@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useCallback, useMemo, useState } from "react";
+import { getApiUrl, API_CONFIG } from '../config/api.js';
 
 const ContactSection = ({ shouldReduceMotion }) => {
   const [formData, setFormData] = useState({
@@ -45,35 +46,43 @@ const ContactSection = ({ shouldReduceMotion }) => {
       setIsSubmitting(true);
 
       try {
-        // Send email using EmailJS (client-side email service)
-        const response = await fetch("/api/send-email", {
-          method: "POST",
+        const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.CONTACT), {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
         });
 
-        if (response.ok) {
-          // Reset form
-          setFormData({ name: "", email: "", project: "" });
-          alert("Message sent successfully! We'll get back to you soon.");
-        } else {
-          throw new Error("Failed to send message");
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || 'Failed to send message');
         }
-      } catch (error) {
-        console.error("Error sending message:", error);
+
+        // Success - Reset form
+        setFormData({ name: "", email: "", project: "" });
         alert(
-          "Failed to send message. Please try again or contact us directly."
+          "🎉 Message sent successfully!\n\n" +
+          "✅ Admin notification sent\n" +
+          "✅ Confirmation email sent to you\n" +
+          "✅ We'll respond within 24 hours\n\n" +
+          "Thank you for choosing CodeForge!"
+        );
+
+      } catch (error) {
+        console.error("Email sending failed:", error);
+        alert(
+          "❌ Failed to send message.\n\n" +
+          "Please try again or contact us directly at:\n" +
+          "info@thecodeforge.dev"
         );
       } finally {
         setIsSubmitting(false);
       }
     },
     [formData]
-  );
-
-  return (
+  ); return (
     <div id="contact" className="bg-white contact-section">
       <div className="contact-container">
         <motion.div

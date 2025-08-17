@@ -30,7 +30,7 @@ const App = () => {
   const scrollTimeoutRef = useRef(null);
   const lenisRef = useRef(null);
 
-  const words = useMemo(() => ["WEBSITES", "AUTOMATION SCRIPTS", "APPS"], []);
+  const words = useMemo(() => ["WEBSITES", "AUTOMATIONS", "APPS"], []);
 
   // Mobile detection hook
   useEffect(() => {
@@ -136,7 +136,7 @@ const App = () => {
   // Optimized scroll indicator visibility
   useEffect(() => {
     const scrollTimeoutId = scrollTimeoutRef.current;
-    
+
     const unsubscribe = scrollY.on("change", (latest) => {
       const shouldShow = latest < 100;
       if (shouldShow !== showScrollIndicator) {
@@ -181,11 +181,11 @@ const App = () => {
 
   return (
     <>
-      <Navigation 
+      <Navigation
         shouldReduceMotion={shouldReduceMotion}
         scrollToSection={scrollToSection}
       />
-      
+
       <HeroSection
         shouldReduceMotion={shouldReduceMotion}
         heroOpacity={heroOpacity}
@@ -195,16 +195,16 @@ const App = () => {
         showScrollIndicator={showScrollIndicator}
         isMobile={isMobile}
       />
-      
+
       <AboutSection shouldReduceMotion={shouldReduceMotion} />
-      
+
       <ServicesSection shouldReduceMotion={shouldReduceMotion} />
-      
+
       <TestimonialsSection shouldReduceMotion={shouldReduceMotion} />
-      
+
       <ContactSection shouldReduceMotion={shouldReduceMotion} />
-      
-      <FooterSection 
+
+      <FooterSection
         shouldReduceMotion={shouldReduceMotion}
         scrollToSection={scrollToSection}
       />

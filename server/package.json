@@ -1,0 +1,30 @@
+{
+    "name": "codeforge-server",
+    "version": "1.0.0",
+    "description": "CodeForge backend server for contact form and API services",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "node index.js",
+        "vercel-build": "echo 'No build step required'"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "nodemailer": "^6.9.7",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "express",
+        "nodejs",
+        "api",
+        "email",
+        "contact-form"
+    ],
+    "author": "CodeForge",
+    "license": "MIT"
+}
