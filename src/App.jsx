@@ -8,13 +8,13 @@ import Lenis from "lenis";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import {
-  Navigation,
-  HeroSection,
   AboutSection,
-  ServicesSection,
-  TestimonialsSection,
   ContactSection,
   FooterSection,
+  HeroSection,
+  Navigation,
+  ServicesSection,
+  TestimonialsSection,
 } from "./components";
 
 const App = () => {
@@ -198,7 +198,10 @@ const App = () => {
 
       <AboutSection shouldReduceMotion={shouldReduceMotion} />
 
-      <ServicesSection shouldReduceMotion={shouldReduceMotion} />
+      <ServicesSection
+        shouldReduceMotion={shouldReduceMotion}
+        scrollToSection={scrollToSection}
+      />
 
       <TestimonialsSection shouldReduceMotion={shouldReduceMotion} />
 
