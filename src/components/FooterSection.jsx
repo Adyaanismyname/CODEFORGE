@@ -60,9 +60,12 @@ const FooterSection = ({ shouldReduceMotion, scrollToSection }) => {
               >
                 Contact
               </button>
-              <a href="#" className="footer-link">
+              <button
+                onClick={() => scrollToSection("#portfolio")}
+                className="footer-link"
+              >
                 Portfolio
-              </a>
+              </button>
               <a href="#" className="footer-link">
                 Blog
               </a>
@@ -82,24 +85,42 @@ const FooterSection = ({ shouldReduceMotion, scrollToSection }) => {
           >
             <h4 className="footer-heading">Services</h4>
             <div className="footer-link-list">
-              <a href="#" className="footer-link">
+              <button
+                onClick={() => scrollToSection("#web-development")}
+                className="footer-link"
+              >
                 Web Development
-              </a>
-              <a href="#" className="footer-link">
+              </button>
+              <button
+                onClick={() => scrollToSection("#mobile-apps")}
+                className="footer-link"
+              >
                 Mobile Apps
-              </a>
-              <a href="#" className="footer-link">
+              </button>
+              <button
+                onClick={() => scrollToSection("#cloud-solutions")}
+                className="footer-link"
+              >
                 Cloud Solutions
-              </a>
-              <a href="#" className="footer-link">
+              </button>
+              <button
+                onClick={() => scrollToSection("#ai-ml")}
+                className="footer-link"
+              >
                 AI & ML
-              </a>
-              <a href="#" className="footer-link">
+              </button>
+              <button
+                onClick={() => scrollToSection("#ui-ux-design")}
+                className="footer-link"
+              >
                 UI/UX Design
-              </a>
-              <a href="#" className="footer-link">
+              </button>
+              <button
+                onClick={() => scrollToSection("#ecommerce")}
+                className="footer-link"
+              >
                 E-commerce
-              </a>
+              </button>
             </div>
           </motion.div>
 

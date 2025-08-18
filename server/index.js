@@ -10,18 +10,14 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-const allowedOrigins = process.env.NODE_ENV === 'production'
-    ? [
-        process.env.PRODUCTION_FRONTEND_URL || 'https://codeforge.vercel.app',
-        'http://localhost:5173',  // Allow local development
-        'http://127.0.0.1:5173'   // Allow local development
-    ]
-    : [
-        process.env.FRONTEND_URL || 'http://localhost:5173',
-        'http://127.0.0.1:5173',
-        'https://codeforge.vercel.app',  // Allow production frontend
-        'https://codeforge-server.vercel.app'  // Allow self-reference
-    ];
+const allowedOrigins = [
+    'https://www.thecodeforge.dev',     // Main production domain
+    'https://thecodeforge.dev',        // Non-www version
+    'https://codeforge.vercel.app',    // Vercel fallback
+    'http://localhost:5173',           // Local development
+    'http://127.0.0.1:5173'            // Local development
+];
+
 
 app.use(cors({
     origin: (origin, callback) => {

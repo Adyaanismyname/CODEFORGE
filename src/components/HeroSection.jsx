@@ -30,7 +30,7 @@ const HeroSection = ({
       </video>
 
       {/* Hero Content - Optimized animations */}
-      <div className="hero-container">
+      <div id="hero-container" className="hero-container">
         <motion.div
           className="hero-content"
           style={{

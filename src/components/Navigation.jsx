@@ -24,7 +24,7 @@ const Navigation = ({ shouldReduceMotion, scrollToSection }) => {
                 delay: shouldReduceMotion ? 1.2 : 7,
                 duration: shouldReduceMotion ? 0.3 : 0.8,
               }}
-              onClick={() => scrollToSection("#landing-video")}
+              onClick={() => scrollToSection("#hero-container")}
             >
               CODEFORGE
             </motion.button>
@@ -42,6 +42,12 @@ const Navigation = ({ shouldReduceMotion, scrollToSection }) => {
                 className="nav-link"
               >
                 Services
+              </button>
+              <button
+                onClick={() => scrollToSection("#portfolio")}
+                className="nav-link"
+              >
+                Portfolio
               </button>
               <button
                 onClick={() => scrollToSection("#about")}

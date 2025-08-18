@@ -12,6 +12,7 @@ import {
   HeroSection,
   AboutSection,
   ServicesSection,
+  PortfolioSection,
   TestimonialsSection,
   ContactSection,
   FooterSection,
@@ -199,6 +200,8 @@ const App = () => {
       <AboutSection shouldReduceMotion={shouldReduceMotion} />
 
       <ServicesSection shouldReduceMotion={shouldReduceMotion} />
+
+      <PortfolioSection shouldReduceMotion={shouldReduceMotion} />
 
       <TestimonialsSection shouldReduceMotion={shouldReduceMotion} />
 
