@@ -8,6 +8,8 @@ import Lenis from "lenis";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import {
+  Navigation,
+  HeroSection,
   AboutSection,
   ServicesSection,
   PortfolioSection,
