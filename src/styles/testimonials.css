@@ -111,6 +111,9 @@
   text-align: left;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  height: clamp(420px, 45vh, 480px);
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonial-card:hover {
@@ -144,6 +147,7 @@
   display: flex;
   gap: 4px;
   margin-bottom: 24px;
+  flex-shrink: 0;
 }
 
 .testimonial-star {
@@ -165,6 +169,11 @@
   margin-bottom: 24px;
   font-style: italic;
   position: relative;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
 .testimonial-text::before {
@@ -192,6 +201,7 @@
   font-weight: 500;
   border: 1px solid rgba(255, 127, 0, 0.2);
   margin-bottom: 32px;
+  flex-shrink: 0;
 }
 
 .testimonial-project-icon {
@@ -206,6 +216,8 @@
   gap: 16px;
   padding-top: 24px;
   border-top: 1px solid rgba(26, 26, 26, 0.1);
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .testimonial-avatar {
@@ -288,6 +300,7 @@
 
   .testimonial-card {
     padding: 24px 20px;
+    height: clamp(380px, 40vh, 420px);
   }
 
   .testimonial-card:hover {
@@ -308,6 +321,7 @@
   .testimonial-card {
     padding: 20px 16px;
     border-radius: 20px;
+    height: clamp(360px, 38vh, 400px);
   }
 
   .testimonial-author {
