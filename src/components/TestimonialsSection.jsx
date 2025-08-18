@@ -31,58 +31,58 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
       avatar: "MS",
       rating: 5,
       testimonial:
-        "CodeForge transformed our vision into a stunning web application that exceeded all expectations. Their attention to detail and innovative approach helped us launch ahead of schedule.",
-      project: "E-commerce Platform",
+        "CodeForge built us a lightning-fast bot that finds new SOL tokens before anyone else and sends them straight to our Telegram.",
+      project: "Crypto Monitor Bot",
     },
     {
-      name: "Marcus Rodriguez",
-      position: "CTO, InnovateLabs",
-      company: "InnovateLabs",
-      avatar: "MR",
+      name: "Dirk Ahlemeyer",
+      // position: "CTO, InnovateLabs",
+      // company: "InnovateLabs",
+      avatar: "DA",
       rating: 5,
       testimonial:
-        "Working with CodeForge was a game-changer. They delivered a robust mobile app that perfectly captured our brand identity and user experience goals.",
-      project: "Mobile Application",
+        "CodeForge built my OnlyGoodReviews, a platform where businesses sign up to collect reviews and showcase only the best ones with ease. ",
+      project: "Web Application",
     },
     {
-      name: "Emily Watson",
-      position: "Founder, GreenTech Solutions",
-      company: "GreenTech",
-      avatar: "EW",
+      name: "Jullien Pouget",
+      // position: "Founder, GreenTech Solutions",
+      // company: "GreenTech",
+      avatar: "JP",
       rating: 5,
       testimonial:
-        "The team's expertise in AI and machine learning helped us create solutions we never thought possible. Truly exceptional work and communication throughout.",
-      project: "AI-Powered Analytics",
+        "CodeForge built AbuBeast, a cutting-edge Web3 trading platform with multi-chain support, automated trading, advanced analytics, and real-time portfolio management.",
+      project: "Web Application + Trading Engine",
     },
     {
-      name: "David Kim",
-      position: "Product Manager, CloudFlow",
-      company: "CloudFlow",
-      avatar: "DK",
+      name: "Kas",
+      // position: "Product Manager, CloudFlow",
+      // company: "CloudFlow",
+      avatar: "K",
       rating: 5,
       testimonial:
-        "CodeForge's cloud infrastructure solutions scaled our business seamlessly. Their DevOps expertise saved us months of development time.",
-      project: "Cloud Migration",
+        "CodeForge built the Tech Revisor Automation Suite, a powerful MERN-based CRM + ERP with no-code workflow automation, AI assistant, and full AWS deployment.",
+      project: "ERP System",
     },
     {
-      name: "Jessica Taylor",
-      position: "Creative Director, DesignStudio",
-      company: "DesignStudio",
-      avatar: "JT",
+      name: "Phillip Johnson",
+      // position: "Creative Director, DesignStudio",
+      // company: "DesignStudio",
+      avatar: "PJ",
       rating: 5,
       testimonial:
-        "The UI/UX design work was absolutely brilliant. They understood our vision and created an interface that our users love and our team is proud of.",
-      project: "Design System",
+        "A bot to scrape the data and contact info of political candidates in the US, and then adding them to a database for easy access and outreach.",
+      project: "Lead Generation Pipeline",
     },
     {
-      name: "Alexander Brown",
-      position: "E-commerce Director, RetailPlus",
-      company: "RetailPlus",
-      avatar: "AB",
+      name: "Maratib Lashari",
+      // position: "E-commerce Director, RetailPlus",
+      // company: "RetailPlus",
+      avatar: "ML",
       rating: 5,
       testimonial:
-        "Our online sales increased by 300% after launching the new e-commerce platform. CodeForge delivered beyond our wildest expectations.",
-      project: "E-commerce Redesign",
+        "CodeForge built PBS’s Next.js portfolio site, showcasing their projects, services, and story with engaging design plus contact and property alert features.",
+      project: "PBS NYC",
     },
   ];
 
@@ -128,11 +128,11 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
                 shouldReduceMotion
                   ? {}
                   : {
-                    y: -10,
-                    scale: 1.02,
-                    rotateX: 2,
-                    transition: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
-                  }
+                      y: -10,
+                      scale: 1.02,
+                      rotateX: 2,
+                      transition: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
+                    }
               }
               whileTap={
                 shouldReduceMotion
@@ -242,10 +242,10 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
                 shouldReduceMotion
                   ? {}
                   : {
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(255, 127, 0, 0.3)",
-                    transition: { duration: 0.3 },
-                  }
+                      scale: 1.05,
+                      boxShadow: "0 20px 40px rgba(255, 127, 0, 0.3)",
+                      transition: { duration: 0.3 },
+                    }
               }
               whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
             >
