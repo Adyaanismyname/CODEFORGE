@@ -2,7 +2,7 @@
 #contact.contact-section {
   background: #ffffff !important;
   background-color: #ffffff !important;
-  padding: 120px 0;
+  /* padding: 120px 0; */
   position: relative;
   overflow: hidden;
   z-index: 15;
@@ -13,7 +13,8 @@
 .contact-section {
   background: #ffffff !important;
   background-color: #ffffff !important;
-  padding: 120px 0;
+  /* padding: 120px 0; */
+  padding-bottom: 120px;
   position: relative;
   overflow: hidden;
   z-index: 15;

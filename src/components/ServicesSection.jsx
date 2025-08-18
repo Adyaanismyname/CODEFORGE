@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 
-const ServicesSection = ({ shouldReduceMotion }) => {
+const ServicesSection = ({ shouldReduceMotion, scrollToSection }) => {
   // Memoized animation variants for performance
   const fadeInUp = useMemo(
     () => ({
@@ -224,6 +224,7 @@ const ServicesSection = ({ shouldReduceMotion }) => {
               cutting-edge solutions.
             </p>
             <motion.button
+              onClick={() => scrollToSection("#contact")}
               className="services-cta-button"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}

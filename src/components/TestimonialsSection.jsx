@@ -209,7 +209,7 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
         </motion.div>
 
         {/* Testimonials CTA */}
-        <motion.div
+        {/* <motion.div
           className="testimonials-cta-section"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -248,6 +248,7 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
                     }
               }
               whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+              onClick={() => scrollToSection("#contact")}
             >
               <span>Start Your Project</span>
               <svg
@@ -265,7 +266,7 @@ const TestimonialsSection = ({ shouldReduceMotion }) => {
               </svg>
             </motion.button>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

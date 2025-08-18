@@ -169,11 +169,14 @@
   margin-bottom: 24px;
   font-style: italic;
   position: relative;
-  flex: 1;
+  /* Fixed height for consistent alignment */
+  height: clamp(140px, 15vw, 144px);
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 6;
+  line-clamp: 6;
   -webkit-box-orient: vertical;
+  min-height: 140px;
 }
 
 .testimonial-text::before {
@@ -307,6 +310,13 @@
     transform: translateY(-8px) scale(1.01);
   }
 
+  .testimonial-text {
+    height: clamp(120px, 12vw, 120px);
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    min-height: 120px;
+  }
+
   .testimonial-text::before {
     left: -16px;
   }
@@ -321,7 +331,13 @@
   .testimonial-card {
     padding: 20px 16px;
     border-radius: 20px;
-    height: clamp(360px, 38vh, 400px);
+  }
+
+  .testimonial-text {
+    height: clamp(110px, 10vw, 108px);
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    min-height: 110px;
   }
 
   .testimonial-author {
