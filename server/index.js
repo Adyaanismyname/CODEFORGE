@@ -1,59 +1,60 @@
-import express from 'express';
-import nodemailer from 'nodemailer';
-import cors from 'cors';
-import dotenv from 'dotenv';
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
+const ourEmails = ["researcherintycoons@gmail.com", "adyaanrocks15@gmail.com"];
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
 const allowedOrigins = [
-    'https://www.thecodeforge.dev',     // Main production domain
-    'https://thecodeforge.dev',        // Non-www version
-    'https://codeforge.vercel.app',    // Vercel fallback
-    'http://localhost:5173',           // Local development
-    'http://127.0.0.1:5173'            // Local development
+  "https://www.thecodeforge.dev", // Main production domain
+  "https://thecodeforge.dev", // Non-www version
+  "https://codeforge.vercel.app", // Vercel fallback
+  "http://localhost:5173", // Local development
+  "http://127.0.0.1:5173", // Local development
 ];
 
-
-app.use(cors({
+app.use(
+  cors({
     origin: (origin, callback) => {
-        if (!origin) return callback(null, true); // allow curl/Postman/server
-        if (allowedOrigins.includes(origin)) return callback(null, true);
-        return callback(new Error(`CORS blocked for origin: ${origin}`));
+      if (!origin) return callback(null, true); // allow curl/Postman/server
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
     },
-    methods: ['GET', 'POST', 'OPTIONS'], // allow POST + OPTIONS
-    allowedHeaders: ['Content-Type'],   // allow JSON headers
-    credentials: true                   // if using cookies/auth
-}));
+    methods: ["GET", "POST", "OPTIONS"], // allow POST + OPTIONS
+    allowedHeaders: ["Content-Type"], // allow JSON headers
+    credentials: true, // if using cookies/auth
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Create transporter for nodemailer
 const createTransporter = () => {
-    return nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
 };
 
 // Email templates
-const createAdminEmail = (name, email, project) => {
-    return {
-        from: process.env.EMAIL_USER,
-        to: process.env.ADMIN_EMAIL,
-        subject: `🚀 New Contact Form - ${name}`,
-        html: `
+const createAdminEmail = (name, email, project, OurEmail) => {
+  return {
+    from: process.env.EMAIL_USER,
+    to: OurEmail,
+    subject: `🚀 New Contact Form - ${name}`,
+    html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
         <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-left: 5px solid #ff7f00;">
           <h2 style="color: #333; margin-bottom: 20px; border-bottom: 2px solid #ff7f00; padding-bottom: 10px;">
@@ -91,16 +92,16 @@ const createAdminEmail = (name, email, project) => {
         </div>
       </div>
     `,
-        replyTo: email
-    };
+    replyTo: email,
+  };
 };
 
 const createUserEmail = (name, email, project) => {
-    return {
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: 'Thank you for contacting CodeForge! 🚀',
-        html: `
+  return {
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: "Thank you for contacting CodeForge! 🚀",
+    html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
         <div style="background-color: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
           <div style="text-align: center; margin-bottom: 30px;">
@@ -162,76 +163,77 @@ const createUserEmail = (name, email, project) => {
           </div>
         </div>
       </div>
-    `
-    };
+    `,
+  };
 };
 
 // Contact form endpoint
-app.post('/api/contact', async (req, res) => {
-    try {
-        const { name, email, project } = req.body;
+app.post("/api/contact", async (req, res) => {
+  try {
+    const { name, email, project } = req.body;
 
-        // Validation
-        if (!name || !email || !project) {
-            return res.status(400).json({
-                success: false,
-                message: 'Please provide name, email, and project description.'
-            });
-        }
-
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Please provide a valid email address.'
-            });
-        }
-
-        const transporter = createTransporter();
-
-        // Send admin notification
-        const adminEmail = createAdminEmail(name, email, project);
-        await transporter.sendMail(adminEmail);
-
-        // Send user confirmation  
-        const userEmail = createUserEmail(name, email, project);
-        await transporter.sendMail(userEmail);
-
-        console.log(`📧 Emails sent successfully for: ${name} (${email})`);
-
-        res.status(200).json({
-            success: true,
-            message: 'Emails sent successfully! We\'ll be in touch soon.'
-        });
-
-    } catch (error) {
-        console.error('❌ Email sending failed:', error);
-
-        res.status(500).json({
-            success: false,
-            message: 'Failed to send email. Please try again or contact us directly.',
-            error: process.env.NODE_ENV === 'development' ? error.message : undefined
-        });
+    // Validation
+    if (!name || !email || !project) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide name, email, and project description.",
+      });
     }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide a valid email address.",
+      });
+    }
+
+    const transporter = createTransporter();
+
+    // Send admin notification
+    for (const email of ourEmails) {
+      const adminEmail = createAdminEmail(name, email, project, email);
+      await transporter.sendMail(adminEmail);
+    }
+
+    // Send user confirmation
+    const userEmail = createUserEmail(name, email, project);
+    await transporter.sendMail(userEmail);
+
+    console.log(`📧 Emails sent successfully for: ${name} (${email})`);
+
+    res.status(200).json({
+      success: true,
+      message: "Emails sent successfully! We'll be in touch soon.",
+    });
+  } catch (error) {
+    console.error("❌ Email sending failed:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to send email. Please try again or contact us directly.",
+      error: process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
+  }
 });
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
-    res.json({
-        status: 'OK',
-        timestamp: new Date().toISOString(),
-        environment: process.env.NODE_ENV || 'development'
-    });
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "OK",
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || "development",
+  });
 });
 
 // For local development
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`🚀 Server running on port ${PORT}`);
-        console.log(`📧 Email service configured for: ${process.env.EMAIL_USER}`);
-        console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-    });
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📧 Email service configured for: ${process.env.EMAIL_USER}`);
+    console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
+  });
 }
 
 export default app;
