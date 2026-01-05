@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 
-const ServicesSection = ({ shouldReduceMotion, scrollToSection }) => {
-  // Memoized animation variants for performance
+const ServicesSection = memo(({ shouldReduceMotion, scrollToSection }) => {
+  // Memoized animation variants - reduced complexity
   const fadeInUp = useMemo(
     () => ({
-      initial: { opacity: 0, y: 40 },
+      initial: { opacity: 0, y: 30 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: shouldReduceMotion ? 0.3 : 0.8, ease: "easeOut" },
+      transition: { duration: shouldReduceMotion ? 0.2 : 0.5, ease: "easeOut" },
     }),
     [shouldReduceMotion]
   );
@@ -16,7 +16,7 @@ const ServicesSection = ({ shouldReduceMotion, scrollToSection }) => {
     () => ({
       animate: {
         transition: {
-          staggerChildren: shouldReduceMotion ? 0.05 : 0.1,
+          staggerChildren: shouldReduceMotion ? 0.03 : 0.08,
         },
       },
     }),
@@ -140,23 +140,8 @@ const ServicesSection = ({ shouldReduceMotion, scrollToSection }) => {
           {services.map((service) => (
             <motion.div
               key={service.title}
-              className="service-card"
+              className="service-card service-card-hover"
               variants={fadeInUp}
-              whileHover={
-                shouldReduceMotion
-                  ? {}
-                  : {
-                      y: -15,
-                      scale: 1.03,
-                      rotateX: 2,
-                      transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] },
-                    }
-              }
-              whileTap={
-                shouldReduceMotion
-                  ? {}
-                  : { scale: 0.98, transition: { duration: 0.1 } }
-              }
             >
               <div className="service-card-glow" />
               <div className={`service-icon ${service.iconClass}`}>
@@ -203,17 +188,16 @@ const ServicesSection = ({ shouldReduceMotion, scrollToSection }) => {
           ))}
         </motion.div>
 
-        {/* CTA Section - Optimized */}
+        {/* CTA Section - Simplified */}
         <motion.div
           className="services-cta-section"
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
-            duration: shouldReduceMotion ? 0.3 : 0.8,
-            delay: shouldReduceMotion ? 0 : 0.2,
+            duration: shouldReduceMotion ? 0.2 : 0.5,
             ease: "easeOut",
           }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           <div className="services-cta-container">
             <h3 className="services-cta-title">
@@ -223,27 +207,9 @@ const ServicesSection = ({ shouldReduceMotion, scrollToSection }) => {
               Let's discuss how we can bring your vision to life with our
               cutting-edge solutions.
             </p>
-            <motion.button
-              onClick={() => scrollToSection("#contact")}
-              className="services-cta-button"
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{
-                duration: shouldReduceMotion ? 0.2 : 0.5,
-                delay: shouldReduceMotion ? 0 : 0.3,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true }}
-              whileHover={
-                shouldReduceMotion
-                  ? {}
-                  : {
-                      scale: 1.05,
-                      boxShadow: "0 20px 40px rgba(255, 127, 0, 0.3)",
-                      transition: { duration: 0.3 },
-                    }
-              }
-              whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+            <button
+              onClick={() => scrollToSection && scrollToSection("#contact")}
+              className="services-cta-button cta-button-hover"
             >
               <span>Get Started</span>
               <svg
@@ -259,12 +225,14 @@ const ServicesSection = ({ shouldReduceMotion, scrollToSection }) => {
                   d="M13 7l5 5m0 0l-5 5m5-5H6"
                 />
               </svg>
-            </motion.button>
+            </button>
           </div>
         </motion.div>
       </div>
     </div>
   );
-};
+});
+
+ServicesSection.displayName = "ServicesSection";
 
 export default ServicesSection;

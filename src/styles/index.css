@@ -1,6 +1,9 @@
 /* Main CSS file that imports all section styles */
 @import "tailwindcss";
 
+/* Performance optimizations - load first */
+@import "./performance.css";
+
 /* Import all section styles */
 @import "./base.css";
 @import "./navigation.css";

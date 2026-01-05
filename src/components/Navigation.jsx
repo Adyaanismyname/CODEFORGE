@@ -1,17 +1,17 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 
-const Navigation = ({ shouldReduceMotion, scrollToSection }) => {
+const Navigation = memo(({ shouldReduceMotion, scrollToSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
 
-  const handleNavClick = (section) => {
+  const handleNavClick = useCallback((section) => {
     scrollToSection(section);
     setIsMobileMenuOpen(false);
-  };
+  }, [scrollToSection]);
 
   return (
     <motion.nav
@@ -116,42 +116,30 @@ const Navigation = ({ shouldReduceMotion, scrollToSection }) => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="mobile-menu-content">
-                  <motion.button
+                  <button
                     onClick={() => handleNavClick("#services")}
                     className="mobile-nav-link"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 }}
                   >
                     Services
-                  </motion.button>
-                  <motion.button
+                  </button>
+                  <button
                     onClick={() => handleNavClick("#portfolio")}
                     className="mobile-nav-link"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
                   >
                     Portfolio
-                  </motion.button>
-                  <motion.button
+                  </button>
+                  <button
                     onClick={() => handleNavClick("#about")}
                     className="mobile-nav-link"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
                   >
                     About
-                  </motion.button>
-                  <motion.button
+                  </button>
+                  <button
                     onClick={() => handleNavClick("#contact")}
                     className="mobile-nav-link"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
                   >
                     Contact
-                  </motion.button>
+                  </button>
                 </div>
               </motion.div>
             </motion.div>
@@ -160,6 +148,8 @@ const Navigation = ({ shouldReduceMotion, scrollToSection }) => {
       </div>
     </motion.nav>
   );
-};
+});
+
+Navigation.displayName = "Navigation";
 
 export default Navigation;

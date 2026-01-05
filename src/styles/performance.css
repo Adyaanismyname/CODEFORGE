@@ -1,0 +1,248 @@
+/* ===========================================
+   PERFORMANCE OPTIMIZATIONS
+   CSS-only animations to replace Framer Motion
+   =========================================== */
+
+/* Spinner animation for loading states */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll indicator animations - replaces Framer Motion */
+.scroll-indicator {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.scroll-indicator-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.scroll-dot-animate {
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+.scroll-arrow-animate {
+  animation: scrollArrow 2s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+@keyframes scrollArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* Quote line animation */
+.quote-line-animate {
+  animation: quoteLine 0.8s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes quoteLine {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* ===========================================
+   GPU-ACCELERATED HOVER EFFECTS
+   Replaces Framer Motion whileHover
+   =========================================== */
+
+/* Card hover effect - replaces whileHover */
+.card-hover-effect {
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.25s ease-out;
+  will-change: transform;
+  transform: translateZ(0); /* Force GPU layer */
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-12px) scale(1.02) translateZ(0);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-hover-effect:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* Service card hover */
+.service-card-hover {
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.25s ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.service-card-hover:hover {
+  transform: translateY(-10px) scale(1.02) translateZ(0);
+  box-shadow: 0 25px 50px rgba(255, 127, 0, 0.15);
+}
+
+.service-card-hover:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* Project card hover */
+.project-card-hover {
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.25s ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.project-card-hover:hover {
+  transform: translateY(-10px) scale(1.015) translateZ(0);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.project-card-hover:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* Testimonial card hover */
+.testimonial-card-hover {
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.25s ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.testimonial-card-hover:hover {
+  transform: translateY(-8px) scale(1.015) translateZ(0);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card-hover:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* CTA Button hover */
+.cta-button-hover {
+  transition: transform 0.2s ease-out,
+              box-shadow 0.2s ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.cta-button-hover:hover {
+  transform: scale(1.03) translateZ(0);
+  box-shadow: 0 15px 35px rgba(255, 127, 0, 0.3);
+}
+
+.cta-button-hover:active {
+  transform: scale(0.97) translateZ(0);
+}
+
+/* Submit button hover */
+.submit-btn-hover {
+  transition: transform 0.2s ease-out,
+              box-shadow 0.2s ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.submit-btn-hover:hover:not(:disabled) {
+  transform: scale(1.02) translateZ(0);
+  box-shadow: 0 10px 30px rgba(255, 127, 0, 0.25);
+}
+
+.submit-btn-hover:active:not(:disabled) {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* ===========================================
+   REDUCED MOTION PREFERENCES
+   =========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .scroll-dot-animate,
+  .scroll-arrow-animate,
+  .quote-line-animate {
+    animation: none;
+  }
+  
+  .card-hover-effect,
+  .service-card-hover,
+  .project-card-hover,
+  .testimonial-card-hover,
+  .cta-button-hover,
+  .submit-btn-hover {
+    transition: none;
+  }
+  
+  .card-hover-effect:hover,
+  .service-card-hover:hover,
+  .project-card-hover:hover,
+  .testimonial-card-hover:hover {
+    transform: none;
+  }
+}
+
+/* ===========================================
+   PERFORMANCE: will-change hints
+   Only apply when needed
+   =========================================== */
+
+/* Reset will-change after animations complete */
+.card-hover-effect:not(:hover),
+.service-card-hover:not(:hover),
+.project-card-hover:not(:hover),
+.testimonial-card-hover:not(:hover) {
+  will-change: auto;
+}
+
+/* Video background optimization */
+.video-background {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Smooth content sections */
+.about-section,
+.services-section,
+.portfolio-section,
+.testimonials-section,
+.contact-section {
+  contain: layout style;
+}

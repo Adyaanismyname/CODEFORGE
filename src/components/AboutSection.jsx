@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 
-const AboutSection = ({ shouldReduceMotion }) => {
+const AboutSection = memo(({ shouldReduceMotion }) => {
   // Memoized animation variants for performance
   const fadeInUp = useMemo(
     () => ({
-      initial: { opacity: 0, y: 40 },
+      initial: { opacity: 0, y: 30 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: shouldReduceMotion ? 0.3 : 0.8, ease: "easeOut" },
+      transition: { duration: shouldReduceMotion ? 0.2 : 0.5, ease: "easeOut" },
     }),
     [shouldReduceMotion]
   );
@@ -16,23 +16,16 @@ const AboutSection = ({ shouldReduceMotion }) => {
     () => ({
       animate: {
         transition: {
-          staggerChildren: shouldReduceMotion ? 0.05 : 0.1,
+          staggerChildren: shouldReduceMotion ? 0.03 : 0.08,
         },
       },
     }),
     [shouldReduceMotion]
   );
 
+  // Use CSS hover instead of Framer Motion for better performance
   const cardHover = useMemo(
-    () =>
-      shouldReduceMotion
-        ? {}
-        : {
-            y: -20,
-            scale: 1.05,
-            rotateX: 5,
-            transition: { duration: 0.2, ease: "easeOut" },
-          },
+    () => shouldReduceMotion ? {} : undefined,
     [shouldReduceMotion]
   );
 
@@ -61,24 +54,18 @@ const AboutSection = ({ shouldReduceMotion }) => {
           </motion.p>
         </motion.div>
 
-        {/* Optimized Cards Grid */}
+        {/* Optimized Cards Grid - CSS hover instead of whileHover */}
         <motion.div
           className="cards-grid"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {/* Mission Card */}
           <motion.div
-            className="card"
+            className="card card-hover-effect"
             variants={fadeInUp}
-            whileHover={cardHover}
-            whileTap={
-              shouldReduceMotion
-                ? {}
-                : { scale: 0.98, transition: { duration: 0.1 } }
-            }
           >
             <div className="card-icon card-icon-blue">
               <svg
@@ -104,14 +91,8 @@ const AboutSection = ({ shouldReduceMotion }) => {
 
           {/* Vision Card */}
           <motion.div
-            className="card"
+            className="card card-hover-effect"
             variants={fadeInUp}
-            whileHover={cardHover}
-            whileTap={
-              shouldReduceMotion
-                ? {}
-                : { scale: 0.98, transition: { duration: 0.1 } }
-            }
           >
             <div className="card-icon card-icon-purple">
               <svg
@@ -143,14 +124,8 @@ const AboutSection = ({ shouldReduceMotion }) => {
 
           {/* Values Card */}
           <motion.div
-            className="card"
+            className="card card-hover-effect"
             variants={fadeInUp}
-            whileHover={cardHover}
-            whileTap={
-              shouldReduceMotion
-                ? {}
-                : { scale: 0.98, transition: { duration: 0.1 } }
-            }
           >
             <div className="card-icon card-icon-pink">
               <svg
@@ -175,17 +150,16 @@ const AboutSection = ({ shouldReduceMotion }) => {
           </motion.div>
         </motion.div>
 
-        {/* Quote Section - Optimized */}
+        {/* Quote Section - Simplified */}
         <motion.div
           className="quote-section"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
-            duration: shouldReduceMotion ? 0.3 : 0.7,
-            delay: shouldReduceMotion ? 0 : 0.2,
+            duration: shouldReduceMotion ? 0.2 : 0.5,
             ease: "easeOut",
           }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           <div className="quote-container">
             <svg
@@ -207,23 +181,15 @@ const AboutSection = ({ shouldReduceMotion }) => {
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
             </svg>
           </div>
-          <motion.div
-            className="quote-line"
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{
-              duration: shouldReduceMotion ? 0.3 : 0.8,
-              delay: shouldReduceMotion ? 0 : 0.3,
-              ease: "easeOut",
-            }}
-            viewport={{ once: true }}
-          >
-            <div className="quote-line-gradient" />
-          </motion.div>
+          <div className="quote-line">
+            <div className="quote-line-gradient quote-line-animate" />
+          </div>
         </motion.div>
       </div>
     </div>
   );
-};
+});
+
+AboutSection.displayName = "AboutSection";
 
 export default AboutSection;

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, memo } from "react";
 import { getApiUrl, API_CONFIG } from '../config/api.js';
 
-const ContactSection = ({ shouldReduceMotion }) => {
+const ContactSection = memo(({ shouldReduceMotion }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -10,12 +10,12 @@ const ContactSection = ({ shouldReduceMotion }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Memoized animation variants for performance
+  // Simplified animation variants
   const fadeInUp = useMemo(
     () => ({
-      initial: { opacity: 0, y: 40 },
+      initial: { opacity: 0, y: 25 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: shouldReduceMotion ? 0.3 : 0.8, ease: "easeOut" },
+      transition: { duration: shouldReduceMotion ? 0.2 : 0.4, ease: "easeOut" },
     }),
     [shouldReduceMotion]
   );
@@ -24,7 +24,7 @@ const ContactSection = ({ shouldReduceMotion }) => {
     () => ({
       animate: {
         transition: {
-          staggerChildren: shouldReduceMotion ? 0.05 : 0.1,
+          staggerChildren: shouldReduceMotion ? 0.02 : 0.06,
         },
       },
     }),
@@ -162,12 +162,10 @@ const ContactSection = ({ shouldReduceMotion }) => {
                   required
                 ></textarea>
               </div>
-              <motion.button
+              <button
                 type="submit"
-                className="contact-submit-btn"
+                className="contact-submit-btn submit-btn-hover"
                 disabled={isSubmitting}
-                whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
               >
                 {isSubmitting ? (
                   <>
@@ -192,7 +190,7 @@ const ContactSection = ({ shouldReduceMotion }) => {
                     </svg>
                   </>
                 )}
-              </motion.button>
+              </button>
             </form>
           </motion.div>
 
@@ -247,6 +245,8 @@ const ContactSection = ({ shouldReduceMotion }) => {
       </div>
     </div>
   );
-};
+});
+
+ContactSection.displayName = "ContactSection";
 
 export default ContactSection;

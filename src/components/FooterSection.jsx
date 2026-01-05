@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 
-const FooterSection = ({ shouldReduceMotion, scrollToSection }) => {
-  // Memoized animation variants for performance
+const FooterSection = memo(({ shouldReduceMotion, scrollToSection }) => {
+  // Simplified animation variants
   const fadeInUp = useMemo(
     () => ({
-      initial: { opacity: 0, y: 40 },
+      initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: shouldReduceMotion ? 0.3 : 0.8, ease: "easeOut" },
+      transition: { duration: shouldReduceMotion ? 0.2 : 0.4, ease: "easeOut" },
     }),
     [shouldReduceMotion]
   );
@@ -193,16 +193,7 @@ const FooterSection = ({ shouldReduceMotion, scrollToSection }) => {
         </div>
 
         {/* Footer Bottom */}
-        <motion.div
-          className="footer-bottom"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: shouldReduceMotion ? 0.3 : 0.6,
-            delay: shouldReduceMotion ? 0 : 0.2,
-          }}
-          viewport={{ once: true }}
-        >
+        <div className="footer-bottom">
           <div className="footer-bottom-content">
             <div className="footer-copyright">
               <p>
@@ -227,10 +218,12 @@ const FooterSection = ({ shouldReduceMotion, scrollToSection }) => {
           <div className="footer-made-with">
             <p>Made by the Team CodeForge</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
-};
+});
+
+FooterSection.displayName = "FooterSection";
 
 export default FooterSection;
