@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useMemo, useState, useEffect, memo, useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
 const PortfolioSection = memo(({ shouldReduceMotion }) => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -51,38 +51,47 @@ const PortfolioSection = memo(({ shouldReduceMotion }) => {
       icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
       projects: [
         {
-          name: "E-Commerce Platform",
+          name: "Quickmation",
           description:
-            "Modern React-based e-commerce solution with Next.js and Stripe integration",
-          technologies: [
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Stripe",
-            "Tailwind CSS",
+            "A complete ERP + CRM solution for businesses, along with AI tools and a complete automation suite. My most Ambitious project till date.",
+          technologies: ["MERN Stack", "Tailwind CSS", "Python Selenium"],
+          liveUrl: "https://erp.quickmation.com",
+          githubUrl: "private",
+          featured: true,image: "webp/quickmation-1.webp",
+          gallery: [
+            {
+              type: "image",
+              src: "webp/quickmation-1.webp",
+              alt: "Workout tracker dashboard",
+            },
+            {
+              type: "image",
+              src: "webp/quickmation-2.webp",
+              alt: "Video exercise analysis",
+            },
           ],
-          image: "/api/placeholder/400/250",
-          liveUrl: "#",
-          githubUrl: "#",
+        },
+        {
+          name: "PBS NYC",
+          description:
+            "A portfolio website for PBS NYC (An NYC based construction company), showcasing their services and projects.",
+          technologies: ["Next.js", "MongoDB"],
+          liveUrl: "https://pbs-nyc.vercel.app",
+          githubUrl: "https://github.com/Overproness/pbs_nyc",
           featured: true,
-        },
-        {
-          name: "SaaS Dashboard",
-          description:
-            "Comprehensive analytics dashboard for business intelligence",
-          technologies: ["React", "D3.js", "Material-UI", "Node.js"],
-          image: "/api/placeholder/400/250",
-          liveUrl: "#",
-          githubUrl: "#",
-        },
-        {
-          name: "Portfolio Website",
-          description:
-            "Creative portfolio website with smooth animations and modern design",
-          technologies: ["React", "Framer Motion", "CSS3", "Vite"],
-          image: "/api/placeholder/400/250",
-          liveUrl: "#",
-          githubUrl: "#",
+          image: "webp/pbs-1.webp",
+          gallery: [
+            {
+              type: "image",
+              src: "webp/pbs-1.webp",
+              alt: "Workout tracker dashboard",
+            },
+            {
+              type: "image",
+              src: "webp/pbs-2.webp",
+              alt: "Video exercise analysis",
+            },
+          ],
         },
       ],
     },
@@ -123,49 +132,42 @@ const PortfolioSection = memo(({ shouldReduceMotion }) => {
           githubUrl: "#",
           featured: true,
         },
-        // {
-        //   name: "Fitness Tracker App",
-        //   description:
-        //     "Cross-platform fitness tracking app with social features",
-        //   technologies: ["React Native", "Firebase", "Redux", "Expo"],
-        //   image: "/api/placeholder/400/250",
-        //   liveUrl: "#",
-        //   githubUrl: "#",
-        // },
-        // {
-        //   name: "Food Delivery App",
-        //   description:
-        //     "On-demand food delivery application with real-time tracking",
-        //   technologies: ["React Native", "Socket.io", "MongoDB", "Express"],
-        //   image: "/api/placeholder/400/250",
-        //   liveUrl: "#",
-        //   githubUrl: "#",
-        // },
       ],
     },
     {
-      id: "cloud-solutions",
-      title: "Cloud Solutions",
-      icon: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10",
+      id: "automations",
+      title: "Automations",
+      icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
       projects: [
         {
-          name: "Microservices Architecture",
+          name: "Political Candidates Scrapper and Dashboard",
           description:
-            "Scalable microservices deployment with Kubernetes orchestration",
-          technologies: ["Docker", "Kubernetes", "AWS", "Node.js", "MongoDB"],
-          image: "/api/placeholder/400/250",
-          liveUrl: "#",
-          githubUrl: "#",
-          featured: true,
-        },
-        {
-          name: "CI/CD Pipeline",
-          description:
-            "Automated deployment pipeline with comprehensive testing",
-          technologies: ["GitHub Actions", "Docker", "AWS", "Terraform"],
-          image: "/api/placeholder/400/250",
-          liveUrl: "#",
-          githubUrl: "#",
+            "A bot that scrapes political candidates data from various websites including Facebook and displays it on a dashboard.",
+          technologies: ["MERN Stack", "Selenium"],
+          image: "/webp/political-candidates-website-1.webp",
+          githubUrl: "private",
+          gallery: [
+            {
+              type: "image",
+              src: "/webp/political-candidates-website-1.webp",
+              alt: "The main Interface of the Dasboard",
+            },
+            {
+              type: "image",
+              src: "/webp/political-candidates-website-2.webp",
+              alt: "Advanced Options for Facebook Scraping",
+            },
+            {
+              type: "image",
+              src: "/webp/political-candidates-website-3.webp",
+              alt: "Data View Section of the Dashboard",
+            },
+            {
+              type: "image",
+              src: "/webp/political-candidates-website-4.webp",
+              alt: "Additional Features like Scheduling and Exporting Data",
+            },
+          ],
         },
       ],
     },
@@ -268,6 +270,62 @@ const PortfolioSection = memo(({ shouldReduceMotion }) => {
             },
           ],
           githubUrl: "#",
+        },
+        {
+          name: "GRU XNet",
+          description:
+            "A Deep learning model for emotion recognition using clinical EEG",
+          technologies: ["Python", "Pytorch", "Cuda"],
+          image: "/webp/gru-xnet-1.webp",
+          githubUrl: "https://github.com/Overproness/GRU-XNet_EEG_Emotion_Recognition",
+          gallery: [
+            {
+              type: "image",
+              src: "/webp/gru-xnet-1.webp",
+              alt: "Architecture",
+            },
+            {
+              type: "image",
+              src: "/webp/gru-xnet-2.webp",
+              alt: "Detailed Diagram",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "blockchain",
+      title: "Blockchain",
+      icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+      projects: [
+        {
+          name: "Swappers 2.0",
+          description:
+            "A project that buys the newly launched tokens on Solana, holds them for a while, and then sells them for profit. If an anomoly is detected, it immediately sells that token using Jito.",
+          technologies: ["RUST", "Python"],
+          githubUrl: "private",
+          featured: true,
+        },
+        {
+          name: "AbuBeast",
+          description:
+            "A website that allows customers to link their crypto wallets and let AI trade on their behalf.",
+          technologies: ["Next.js", "Tailwind CSS", "MongoDB", "RUST", "Python"],
+          liveUrl: "https://abubeast.vercel.app",
+          githubUrl: "https://github.com/Overproness/abubeast",
+          image: "webp/abubeast-1.webp",
+          gallery: [
+            {
+              type: "image",
+              src: "webp/abubeast-1.webp",
+              alt: "Workout tracker dashboard",
+            },
+            {
+              type: "image",
+              src: "webp/abubeast-2.webp",
+              alt: "Video exercise analysis",
+            },
+          ],
         },
       ],
     },
