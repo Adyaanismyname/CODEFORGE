@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useCallback, useMemo, useState, memo } from "react";
-import { getApiUrl, API_CONFIG } from '../config/api.js';
+import { memo, useCallback, useMemo, useState } from "react";
+import { API_CONFIG, getApiUrl } from '../config/api.js';
 
 const ContactSection = memo(({ shouldReduceMotion }) => {
   const [formData, setFormData] = useState({
@@ -63,17 +63,17 @@ const ContactSection = memo(({ shouldReduceMotion }) => {
         // Success - Reset form
         setFormData({ name: "", email: "", project: "" });
         alert(
-          "🎉 Message sent successfully!\n\n" +
-          "✅ Admin notification sent\n" +
-          "✅ Confirmation email sent to you\n" +
-          "✅ We'll respond within 24 hours\n\n" +
+          "Message sent successfully!\n\n" +
+          "Admin notification sent\n" +
+          "Confirmation email sent to you\n" +
+          "We'll respond within 24 hours\n\n" +
           "Thank you for choosing CodeForge!"
         );
 
       } catch (error) {
         console.error("Email sending failed:", error);
         alert(
-          "❌ Failed to send message.\n\n" +
+          "Failed to send message.\n\n" +
           "Please try again or contact us directly at:\n" +
           "info@thecodeforge.dev"
         );

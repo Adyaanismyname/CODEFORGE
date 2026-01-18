@@ -6,14 +6,14 @@
     "type": "module",
     "scripts": {
         "start": "node index.js",
-        "dev": "node index.js",
+        "dev": "nodemon index.js",
         "vercel-build": "echo 'No build step required'"
     },
     "dependencies": {
-        "express": "^4.18.2",
-        "nodemailer": "^6.9.7",
         "cors": "^2.8.5",
-        "dotenv": "^16.3.1"
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "nodemailer": "^6.9.7"
     },
     "engines": {
         "node": ">=18.0.0"
@@ -26,5 +26,8 @@
         "contact-form"
     ],
     "author": "CodeForge",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "nodemon": "^3.1.11"
+    }
 }

@@ -53,40 +53,47 @@ const createAdminEmail = (name, email, project, OurEmail) => {
   return {
     from: process.env.EMAIL_USER,
     to: OurEmail,
-    subject: `🚀 New Contact Form - ${name}`,
+    subject: `New Contact Form - ${name}`,
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
-        <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-left: 5px solid #ff7f00;">
-          <h2 style="color: #333; margin-bottom: 20px; border-bottom: 2px solid #ff7f00; padding-bottom: 10px;">
-            📋 New Contact Form Submission
-          </h2>
+      <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);">
+        <div style="background: rgba(20, 20, 35, 0.95); padding: 32px; border-radius: 16px; border: 1px solid rgba(255, 127, 0, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);">
           
-          <div style="background-color: #f8f8f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #ff7f00; margin-top: 0;">Contact Details</h3>
-            <p style="margin: 8px 0;"><strong>👤 Name:</strong> ${name}</p>
-            <p style="margin: 8px 0;"><strong>📧 Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p style="margin: 8px 0;"><strong>⏰ Submitted:</strong> ${new Date().toLocaleString()}</p>
+          <!-- Header -->
+          <div style="text-align: center; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 2px solid rgba(255, 127, 0, 0.4);">
+            <h1 style="color: #ff7f00; font-size: 28px; margin: 0 0 8px 0; letter-spacing: 3px; font-weight: 800;">CODEFORGE</h1>
+            <p style="color: rgba(255, 255, 255, 0.6); margin: 0; font-size: 12px; letter-spacing: 1px;">NEW CONTACT SUBMISSION</p>
+          </div>
+          
+          <!-- Contact Details -->
+          <div style="background: linear-gradient(135deg, rgba(255, 127, 0, 0.15) 0%, rgba(255, 149, 0, 0.08) 100%); padding: 24px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #ff7f00;">
+            <h3 style="color: #ff9500; margin: 0 0 16px 0; font-size: 16px; font-weight: 600;">Contact Details</h3>
+            <p style="margin: 10px 0; color: rgba(255, 255, 255, 0.9);"><strong style="color: #ff7f00;">Name:</strong> ${name}</p>
+            <p style="margin: 10px 0; color: rgba(255, 255, 255, 0.9);"><strong style="color: #ff7f00;">Email:</strong> <a href="mailto:${email}" style="color: #ff9500; text-decoration: none;">${email}</a></p>
+            <p style="margin: 10px 0; color: rgba(255, 255, 255, 0.9);"><strong style="color: #ff7f00;">Submitted:</strong> ${new Date().toLocaleString()}</p>
           </div>
 
-          <div style="background-color: #f0f7ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #0066cc;">
-            <h3 style="color: #0066cc; margin-top: 0;">💼 Project Description</h3>
-            <p style="color: #333; line-height: 1.6; white-space: pre-wrap;">${project}</p>
+          <!-- Project Description -->
+          <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.12) 0%, rgba(102, 51, 153, 0.08) 100%); padding: 24px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #8a2be2;">
+            <h3 style="color: #a855f7; margin: 0 0 16px 0; font-size: 16px; font-weight: 600;">Project Description</h3>
+            <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; white-space: pre-wrap; margin: 0;">${project}</p>
           </div>
 
-          <div style="background-color: #fff3cd; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ffc107;">
-            <h3 style="color: #856404; margin-top: 0;">⚡ Action Required</h3>
-            <p style="color: #856404; margin: 0;">
+          <!-- Action Required -->
+          <div style="background: linear-gradient(135deg, rgba(255, 127, 0, 0.2) 0%, rgba(255, 87, 34, 0.12) 100%); padding: 24px; border-radius: 12px; margin: 20px 0; border: 1px solid rgba(255, 127, 0, 0.3);">
+            <h3 style="color: #ff7f00; margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">Action Required</h3>
+            <p style="color: rgba(255, 255, 255, 0.9); margin: 0 0 8px 0;">
               <strong>Please respond within 24 hours to maintain our professional standards.</strong>
             </p>
-            <p style="color: #856404; margin: 5px 0 0 0;">
+            <p style="color: rgba(255, 255, 255, 0.7); margin: 0; font-size: 14px;">
               Click reply to respond directly to the customer.
             </p>
           </div>
 
-          <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-            <p style="color: #666; margin: 0;">
-              <strong>CodeForge Contact System</strong><br>
-              Automated from codeforge.dev
+          <!-- Footer -->
+          <div style="text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <p style="color: rgba(255, 255, 255, 0.5); margin: 0; font-size: 13px;">
+              <strong style="color: #ff7f00;">CodeForge Contact System</strong><br>
+              <span style="font-size: 12px;">Automated from thecodeforge.dev</span>
             </p>
           </div>
         </div>
@@ -100,65 +107,81 @@ const createUserEmail = (name, email, project) => {
   return {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: "Thank you for contacting CodeForge! 🚀",
+    subject: "Thank you for contacting CodeForge!",
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div style="background-color: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-          <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #ff7f00; font-size: 32px; margin: 0; letter-spacing: 2px;">CODEFORGE</h1>
-            <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Forging the future of technology</p>
+      <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);">
+        <div style="background: rgba(20, 20, 35, 0.95); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 127, 0, 0.2); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);">
+          
+          <!-- Header -->
+          <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #ff7f00; font-size: 32px; margin: 0 0 8px 0; letter-spacing: 4px; font-weight: 800;">CODEFORGE</h1>
+            <p style="color: rgba(255, 255, 255, 0.6); margin: 0; font-size: 13px; letter-spacing: 1px;">Forging the future of technology</p>
           </div>
 
-          <h2 style="color: #333; margin-bottom: 20px;">Hi ${name}! 👋</h2>
+          <!-- Greeting -->
+          <h2 style="color: white; margin: 0 0 20px 0; font-size: 24px;">Hi ${name}!</h2>
           
-          <p style="color: #666; line-height: 1.6; font-size: 16px;">
-            Thank you for reaching out to <strong>CodeForge</strong>! We've received your project inquiry and are excited to discuss your vision.
+          <p style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; font-size: 16px; margin: 0 0 28px 0;">
+            Thank you for reaching out to <strong style="color: #ff7f00;">CodeForge</strong>! We've received your project inquiry and are excited to discuss your vision.
           </p>
 
-          <div style="background: linear-gradient(135deg, #ff7f00, #ff9500); padding: 20px; border-radius: 10px; margin: 25px 0; color: white;">
-            <h3 style="margin-top: 0; color: white;">📋 Your Submission</h3>
-            <div style="background-color: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
-              <p style="margin: 0; white-space: pre-wrap; color: white;">${project}</p>
+          <!-- Your Submission -->
+          <div style="background: linear-gradient(135deg, rgba(255, 127, 0, 0.2) 0%, rgba(255, 149, 0, 0.1) 100%); padding: 24px; border-radius: 14px; margin: 0 0 28px 0; border: 1px solid rgba(255, 127, 0, 0.3);">
+            <h3 style="margin: 0 0 16px 0; color: #ff9500; font-size: 16px; font-weight: 600;">Your Submission</h3>
+            <div style="background: rgba(0, 0, 0, 0.3); padding: 16px; border-radius: 10px;">
+              <p style="margin: 0; white-space: pre-wrap; color: rgba(255, 255, 255, 0.9); line-height: 1.6;">${project}</p>
             </div>
           </div>
 
-          <div style="background-color: #f8f9ff; padding: 25px; border-radius: 10px; margin: 25px 0; border: 2px solid #e3e8ff;">
-            <h3 style="color: #4c63d2; margin-top: 0;">⚡ What Happens Next</h3>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="background: #4c63d2; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</span>
-                <span style="color: #333;">Our team reviews your requirements within 24 hours</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="background: #4c63d2; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</span>
-                <span style="color: #333;">We prepare a tailored proposal and timeline</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="background: #4c63d2; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</span>
-                <span style="color: #333;">We schedule a consultation call to discuss your vision</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="background: #ff7f00; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">🚀</span>
-                <span style="color: #333;">We begin crafting your digital solution</span>
-              </div>
-            </div>
+          <!-- What Happens Next -->
+          <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.12) 0%, rgba(102, 51, 153, 0.08) 100%); padding: 28px; border-radius: 14px; margin: 0 0 28px 0; border: 1px solid rgba(138, 43, 226, 0.2);">
+            <h3 style="color: #a855f7; margin: 0 0 20px 0; font-size: 16px; font-weight: 600;">What Happens Next</h3>
+            
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 10px 0; vertical-align: top; width: 40px;">
+                  <div style="background: linear-gradient(135deg, #ff7f00, #ff9500); color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 14px;">1</div>
+                </td>
+                <td style="padding: 10px 0; color: rgba(255, 255, 255, 0.85); font-size: 14px; line-height: 1.5;">Our team reviews your requirements within 24 hours</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; vertical-align: top; width: 40px;">
+                  <div style="background: linear-gradient(135deg, #ff7f00, #ff9500); color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 14px;">2</div>
+                </td>
+                <td style="padding: 10px 0; color: rgba(255, 255, 255, 0.85); font-size: 14px; line-height: 1.5;">We prepare a tailored proposal and timeline</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; vertical-align: top; width: 40px;">
+                  <div style="background: linear-gradient(135deg, #ff7f00, #ff9500); color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 14px;">3</div>
+                </td>
+                <td style="padding: 10px 0; color: rgba(255, 255, 255, 0.85); font-size: 14px; line-height: 1.5;">We schedule a consultation call to discuss your vision</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; vertical-align: top; width: 40px;">
+                  <div style="background: linear-gradient(135deg, #a855f7, #8a2be2); color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: bold; font-size: 14px;">4</div>
+                </td>
+                <td style="padding: 10px 0; color: rgba(255, 255, 255, 0.85); font-size: 14px; line-height: 1.5;">We begin crafting your digital solution</td>
+              </tr>
+            </table>
           </div>
 
-          <div style="background-color: #e8f5e8; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #28a745;">
-            <h3 style="color: #28a745; margin-top: 0;">📞 Need Immediate Assistance?</h3>
-            <p style="color: #333; margin: 8px 0;">
-              <strong>Email:</strong> <a href="mailto:${process.env.ADMIN_EMAIL}" style="color: #ff7f00;">${process.env.ADMIN_EMAIL}</a>
+          <!-- Need Assistance -->
+          <div style="background: linear-gradient(135deg, rgba(255, 127, 0, 0.1) 0%, rgba(138, 43, 226, 0.08) 100%); padding: 24px; border-radius: 14px; margin: 0 0 28px 0; border-left: 4px solid #ff7f00;">
+            <h3 style="color: #ff9500; margin: 0 0 14px 0; font-size: 16px; font-weight: 600;">Need Immediate Assistance?</h3>
+            <p style="color: rgba(255, 255, 255, 0.85); margin: 8px 0;">
+              <strong style="color: #ff7f00;">Email:</strong> <a href="mailto:info@thecodeforge.dev" style="color: #a855f7; text-decoration: none;">info@thecodeforge.dev</a>
             </p>
-            <p style="color: #333; margin: 8px 0;">
-              <strong>Response Time:</strong> Within 4 business hours
+            <p style="color: rgba(255, 255, 255, 0.85); margin: 8px 0;">
+              <strong style="color: #ff7f00;">Response Time:</strong> Within 4 business hours
             </p>
           </div>
 
-          <div style="text-align: center; margin-top: 40px; padding-top: 25px; border-top: 2px solid #f0f0f0;">
-            <p style="color: #666; margin: 10px 0; font-weight: bold;">Best regards,</p>
-            <p style="color: #ff7f00; margin: 5px 0; font-weight: bold; font-size: 18px;">The CodeForge Team</p>
-            <p style="color: #999; margin: 15px 0 0 0; font-size: 14px; font-style: italic;">
-              💻 Crafting digital excellence through code, creativity, and boundless imagination.
+          <!-- Footer -->
+          <div style="text-align: center; margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <p style="color: rgba(255, 255, 255, 0.6); margin: 0 0 8px 0; font-size: 14px;">Best regards,</p>
+            <p style="color: #ff7f00; margin: 0 0 16px 0; font-weight: bold; font-size: 18px;">The CodeForge Team</p>
+            <p style="color: rgba(255, 255, 255, 0.5); margin: 0; font-size: 13px; font-style: italic;">
+              Crafting digital excellence through code, creativity, and boundless imagination.
             </p>
           </div>
         </div>
@@ -201,14 +224,14 @@ app.post("/api/contact", async (req, res) => {
     const userEmail = createUserEmail(name, email, project);
     await transporter.sendMail(userEmail);
 
-    console.log(`📧 Emails sent successfully for: ${name} (${email})`);
+    console.log(`Emails sent successfully for: ${name} (${email})`);
 
     res.status(200).json({
       success: true,
       message: "Emails sent successfully! We'll be in touch soon.",
     });
   } catch (error) {
-    console.error("❌ Email sending failed:", error);
+    console.error("Email sending failed:", error);
 
     res.status(500).json({
       success: false,
@@ -230,9 +253,9 @@ app.get("/api/health", (req, res) => {
 // For local development
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-    console.log(`📧 Email service configured for: ${process.env.EMAIL_USER}`);
-    console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Email service configured for: ${process.env.ADMIN_EMAIL}`);
+    console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
   });
 }
 

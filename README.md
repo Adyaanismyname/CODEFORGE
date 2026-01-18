@@ -4,7 +4,7 @@ Elevating ideas into beautiful, high‑performance digital products—websites, 
 
 ---
 
-## ✨ Highlights
+## Highlights
 - Smooth video hero with buttery scrolling (Lenis)
 - Delightful motion (Framer Motion) with reduced‑motion support
 - Mobile‑first, responsive layout
@@ -14,7 +14,7 @@ Elevating ideas into beautiful, high‑performance digital products—websites, 
 
 ---
 
-## 📸 Preview
+## Preview
 - Hero with typing effect showcasing: WEBSITES • AUTOMATION SCRIPTS • APPS
 - Crisp white Contact section for clarity and focus
 - Dimmed, cinematic Footer overlaying the background video
@@ -25,7 +25,7 @@ Add your media to `public/`:
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 - Vite + React
 - Framer Motion
 - Lenis (smooth scroll)
@@ -34,7 +34,7 @@ Add your media to `public/`:
 
 ---
 
-## 🛠️ Setup
+## Setup
 
 1) Install dependencies
 ```
@@ -58,7 +58,7 @@ npm run preview
 
 ---
 
-## 🧩 Project Structure
+## Project Structure
 ```
 codeforge/
   public/
@@ -74,7 +74,7 @@ codeforge/
 
 ---
 
-## ⚙️ Environment (Email)
+## Environment (Email)
 If you use the contact form backend (`/api/send-email.js`), set environment variables:
 ```
 EMAIL_SERVICE=...
@@ -85,7 +85,7 @@ ADMIN_EMAIL=...
 
 ---
 
-## 🧭 Key Features
+## Key Features
 - Animated hero with typing effect and parallax fade on scroll
 - Smooth, precise section navigation via Lenis
 - Services grid with hover depth and micro‑interactions
@@ -95,39 +95,39 @@ ADMIN_EMAIL=...
 
 ---
 
-## 🎨 Theming
+## Theming
 - Primary accent: Orange (#ff7f00)
 - Typography: JetBrains Mono (monospace aesthetic)
 - Strong text contrast via Tailwind utilities + text shadow
 
 ---
 
-## 📦 Scripts (package.json)
+## Scripts (package.json)
 - `dev` – Vite dev server
 - `build` – Production build
 - `preview` – Preview built app
 
 ---
 
-## 🧪 Quality
+## Quality
 - Honors prefers‑reduced‑motion
 - Linted with ESLint config included
 - Mobile‑first media queries and fluid sizing (clamp)
 
 ---
 
-## 🔧 Customization Tips
+## Customization Tips
 - Replace `CODEFORGE` and copy in `App.jsx` with your brand voice
 - Swap the hero video in `public/landing-page.webm`
 - Update contact email in the footer and API handler
 
 ---
 
-## 📬 Contact
+## Contact
 - Email: hello@codeforge.dev
-- Made with ❤️ by the CodeForge team
+- Made with love by the CodeForge team
 
 ---
 
-## 📝 License
+## License
 Copyright © CodeForge. All rights reserved.
